@@ -67,7 +67,7 @@ Now comparing with the training data sets, we ar getting pretty similar performa
 For this model we were able to achieve excellent performance due to optimun value of alpha which was achived due to CCP. In this case best alpha = 0.00882, is considered to achived better recall with better accuracy.
 
 
-# Heart Disease Diagnosis
+# 3.Heart Disease Diagnosis
 
 Here our target is 1 which means 'Risk of Heart Disease' or target is 0 which means No heart Disease.
 
