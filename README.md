@@ -1,6 +1,6 @@
 # Classification_Model_Optimization
 
-# Selecting Classification Thresholds i.e. Selecting Recall/Precision/Accuracy for industry requiremnets 
+# Selecting Classification Thresholds i.e. Selecting Recall/Precision/Accuracy as per industry requirements 
 
 # 1. System Administrators - Training Levels model
 
@@ -65,3 +65,62 @@ As per above results I was able to achieve the accuracy of 96.9 % with a **Recal
 Now comparing with the training data sets, we ar getting pretty similar performance metrics for both training & testing data. Accuracy for training data sets is ~ 97% with recall of ~ 99%.
 
 For this model we were able to achieve excellent performance due to optimun value of alpha which was achived due to CCP. In this case best alpha = 0.00882, is considered to achived better recall with better accuracy.
+
+
+# Heart Disease Diagnosis
+
+Here our target is 1 which means 'Risk of Heart Disease' or target is 0 which means No heart Disease.
+
+For selecting classification threshold we need to understand what TP, TN, FP, FN explains in business terms.
+
+-TP: Person has a Risk of Heart disease and it is predicting that there is a risk of disease.
+
+-TN: Person has a No Heart disease and it is predicting that there is no heart disease.
+
+-FP: Person has a No Heart disease and it is predicting that there is a risk of disease.
+
+-FN: Person has a Risk of Heart disease and it is predicting that there is no heart disease.
+
+Here I think we should focus on Recall metrics because False Negative seems to be a costly parametere, as if we predict no heart disease for a person with a high risk of heart disease that person might die from a heart attack. We need to predict false negatives correctly because someone's life is at stake. we need lowest False Negatives possible with highest acuracy in such a manner that we can save people's life by taking precautionary actions.
+
+So we need to select classification threshold and performance measure in such a way that we are decreasing the False Negatives i.e. we should focus on Recall
+
+s we discussed above we need to choose the performance metrics in such a way that we are decreasing the false negatives and we can say in a way we are increasing the true positives. For doing that we need to choose the "Recall" metrics to increase.
+
+Recall metrics would be larger if we are able to decrease the False Negatives. From above table we can see that for threshold of 0.20, FN % is 0 and Recall is max = 1.
+
+Talking about the model performance we can say that the logistic test data is performing better than the trainig data with almost similar accuracy and higher Recall. Please refer below for the metrics.
+
+Accuracy of the Model is : 89.01
+Recall of the Model is : 96.23
+Accuracy of the Model (Train) is : 84.91
+Recall of the Model (Train) : 89.29
+But we need to increase our recall more, as we trying to eliminate all the posibilites of false classification of a patient who might have chances of heart disease.
+
+Our focus is to increase the Recall parameter for better business decisions. As discussed from the above table we can choose the threshold of 0.2 to increase both the model performance & the recall which is our main target.
+
+But with default threshold of 0.5 our model is not performing bad, it seems to me as Excellent in case of both recall and accuracy but would depend purely on the Business perpective of the model, what exatly we are looking for.
+
+Rating the effective of the above model I can say it is performing Excellently.
+
+I woule be choosing threshold = 0.20 to achive Max Recall with high accuracy.
+
+As I discussed above our main focus is to increase the Recall with highest accuracy, as we want our model to minimize the False Negatives. Reducing False Negatives means we are reducing the chance of not detecting a risk of heat disease when the risk actually exists. For this we applied different methods like Grid Search best estimaror & Cost comlexity pruning to find the optimal hyperparameters & alphas to build a better model.
+
+As per above results I was able to achieve the accuracy of 85.5% with a recall of 92.7%, which means we are able to detect that 92.7% of people who has risk of heart disease are predicted correctly with an accuracy of 85.5%%, these parameters are of tested datatsets.
+
+Comparing with the training data sets without CCP the model was getting overfitted. but with the help of pruning we were able to achieve a good model. The beaauty of this model is that we were able to achive larger vaues of Recall, please refer below the parameter metrics acieved after pruning.
+
+**Accuracy of the model : 0.855
+
+**Recall of the model : 0.927
+
+**Model Train accuracy is : 0.802
+
+**Model Train Recall is : 0.911
+
+Over fitting and similar results for hyperparameter tuning is due to comparatively smaller data set, as while cross validation we donot have much data to play with. Similar datasets are getting chosen for cross validation. This problem was dicarded by chosing optimum value of alpha.
+
+I choosed alpha = 0.023243 to build the model which improved both the model accuracy and recall.
+
+Now talking about the effectiveness of our Model we can say that the model is Adequate because with higher Accuracy & Recall it is going to classify, but not Excellent because we should test it with more data. Excellent effictiveness can be achieved if we would be able to Increas recall to 100 % and Accuracy to atmost 90%-95%. Then we would decrease the possiblily of wrong classification of the risks of heart disease and save more lives.
